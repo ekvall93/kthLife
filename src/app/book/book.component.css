@@ -1,0 +1,14 @@
+.center {
+    position: relative;
+    /* margin: auto; */
+    /* width: 60%; */
+    left:40%;
+    /* padding: 10px; */
+  }
+
+
+  img {
+        position: relative;
+      width: 80%;
+      left:10%;
+    }
