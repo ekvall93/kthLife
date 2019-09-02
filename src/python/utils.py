@@ -11,6 +11,48 @@ import itertools
 #from semiSupervised import *
 import string
 
+def sample_abstrac(cluster_nr, df,df_abs, max_nr_article=10, return_ix=True, keep_count=None, treshold=0):
+    nr_article, article_id = get_nr_cluster(cluster_nr, df)
+    all_ix = get_ix(nr_article, max_nr_article)
+    IX = list()
+    art_id = list()
+    for i, (ix, ixx) in enumerate(zip(all_ix, article_id)):
+        if return_ix:
+            if i >= treshold:
+                print("------------", i + keep_count, "   Article number:", str(int(float(ixx))))
+                see_abstract(cluster_nr, ix, df, df_abs)
+        
+        IX.append(i + keep_count)
+        if i >= treshold:
+            art_id.append(str(int(float(ixx))))
+    return IX, art_id
+
+def get_article_in_cluster(df):
+    invalidChars = set(string.punctuation.replace("_", ""))
+    df_articles = pd.DataFrame()
+    length_list = list()
+    for i, col in enumerate(df.columns):
+        id_list = list()
+        
+        for row in df[col].dropna().tolist():
+            if row is np.nan:
+                break
+            else:
+                if not str(row).islower():
+                    try:
+                        id_list.append(row)
+                    except:
+                        print(row)
+                else:
+                    break
+        length_list.append(len(id_list))
+        df_new = pd.DataFrame({int(col): id_list})
+        df_articles = pd.concat([df_articles, df_new], axis=1)
+    return df_articles, np.array(length_list)
+
+
+def print_abstract(idx, df_abs): print(df_abs[df_abs.Doc_id == idx].Abstracts.values[0])
+
 def get_train_data(df, clusters, model, s):
     num_datapoints = 0
     for i, nlf in enumerate(clusters):

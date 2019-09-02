@@ -1,19 +1,65 @@
 import { Component, OnInit } from '@angular/core';
 
+import lifeScience from '../../assets/json_objects/auth_to_abs.json';
+import authors from '../../assets/json_objects/list_of_author.json';
+import department_to_auth from '../../assets/json_objects/department_to_auth.json';
+import department from '../../assets/json_objects/departments.json';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.css']
 })
 export class BookComponent{
-  chapter = 'chapter1';
+  
 
-  /* categories = [
-    { id: 1, name: 'Development' },
-    { id: 2, name: 'Art' },
-    { id: 3, name: 'Languages' }
-  ];
+  LS: any;
+  search: string;
+  dataAuthor: any[];
+  dataDepartment: any[];
+  keyword: string;
+  depKeyword: string;
+  name: string;
+  abstracts: any[];
+  authInDepartment: any[];
+  depart: any[];
+  department_to_auth: any[];
+  chapter: string;
+  constructor() {
+    this.chapter = 'chapter1';
+   
+    this.LS = lifeScience;
+    this.keyword = 'name';
+    this.depKeyword = 'department';
+    this.dataAuthor = authors;
+    this.dataDepartment = department;
+    this.name = "";
+    this.abstracts = [];
+    this.authInDepartment = [];
+    this.search = "author";
+    this.department_to_auth = department_to_auth;
+    
+  }
+  
+  createPost(name) {
+    this.name = name;
+    for (let entry of this.LS) {
+      let value = entry.name;
+      if (value == this.name) {
+        this.abstracts = entry.abstracts;
+      }  
+    }
+  }
 
-  submit(course) {console.log(course)} */
+  getAuthorInDep(dep) {
+    for (let entry of this.department_to_auth) {
+      let depVal = entry.department;
+      if (depVal == dep) {
+        this.authInDepartment = entry.name;
+      }  
+    }
+  }
+
 
 }

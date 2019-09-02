@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookComponent } from './book/book.component';
 import { FormsModule } from '@angular/forms';
+
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 @NgModule({
   declarations: [
     AppComponent,
@@ -13,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AutocompleteLibModule
   ],
   providers: [],
   bootstrap: [AppComponent]
