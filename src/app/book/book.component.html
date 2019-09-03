@@ -1,5 +1,5 @@
 <div id="content">
-<img src="../../assets/images/Terranlogga.png">
+<img src="./assets/images/Terranlogga.png">
 <ul class="nav nav-pills center" id="topNav">
     <li class="nav-item">
         <a class="nav-link" 
@@ -50,7 +50,7 @@
         <p>
             In this particular project, only the abstract of the article is adopted to increase efficiency. The syllabus (all unique words observed in the collection of articles) amounts to approximately 61 thousand words, with 24 thousand articles and 7 thousand authors.
         </p>
-        <img src="../../assets/images/naive_lifeScience.png" alt="">   
+        <img src="./assets/images/naive_lifeScience.png" alt="">   
         <p>
             The figure above demonstrates the distribution of life science when only considering the department that hired them. There are five different departments and 884 authors. As will be demonstrated in chapter 4, this representation is far from reality, and in fact, somewhat misleading.
         </p>
@@ -63,7 +63,7 @@
         <p>
             The doc2vec model used is "Distributed bag of words," and the specification of the hyper-parameters used is as follows: vector dimension of 500, window-size of 10 and trained for 7000 epochs. The paragraph vectors are restricted to articles-ids since the author vector has no downstream application; hence, minimizing the number of vectors to train and by that reducing the risks to disturb the overall training.
         </p>
-        <img src="../../assets/images/trainingDoc2vec.png">
+        <img src="./assets/images/trainingDoc2vec.png">
         <p>
             The figure above is a small example of the idea of doc2vec. In this example, there are two researchers: researcher A and B. Researcher A is a researcher in life science, and have written an article with doc-di: LS100 which is about dog forensics, and in contrast, researcher B is mathematician that has written an article about Gauge theory with doc-id: M500. To the left, there are two article vectors (M500 and LS100 ) and two-word vectors (Dogs and Addition). Furthermore, as an initial step, these vectors are randomly initiated in three dimensions. Without going into many details, the doc2vec algorithms function is to adjust the vector, so the related items are close to each other in vector space (i.e., M500 to addition, and LS100 to dogs), see the right side of the figure. Now it is possible to compare closeness between words and articles, and this fact is leveraged in the continued work.
         </p>
@@ -82,7 +82,7 @@
         <p>
             The clustering method used was variation Bayesian Gaussian mixture models with 250 number of clusters. 
         </p>
-        <img id="distImg" src="../../assets/images/DistributionClusters.png" alt="">     
+        <img id="distImg" src="./assets/images/DistributionClusters.png" alt="">     
 
         <p>
             The figure above demonstrated the distribution of the life science articles in the different clusters. Imagine skipping this step and, instead, randomly picking articles for the training/testing/validation set; these set would mainly constitute articles from cluster 131, 154, and 206, and less representation(if none) from the smaller cluster. By systematically picking a few data points from each cluster evades this problem, and hence, overfitting is less of a problem.
@@ -112,7 +112,7 @@
         </p>
 
         
-        <img src="../../assets/images/articleDepartmentFinal.png" alt=""> 
+        <img src="./assets/images/articleDepartmentFinal.png" alt=""> 
 
         <p>
             Recall the distribution in chapter 1; the outcome is quite different two ways: diversity and a total number of authors. The method suggests a vast diversity within life science – 34 additional (39 in total)  departments. It also suggests the research within life science is more massive than observed on its surface – almost twice as many (1744 in total) authors. Both these results might seem astounding, but the result in chapter 5 is quite persuasive.

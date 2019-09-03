@@ -7,7 +7,7 @@
   padding-top:120px;
 }
 .centerC5 {
-  padding-top:120px;
+  padding-top:210px;
   position: absolute;
   left: 50%;
   top:20%;
@@ -35,7 +35,7 @@
     left: 50%;
     top:10%;
     transform: translate(-50%, -50%);
-    padding-top:100px;
+    padding-top:210px;
     z-index: -1;
   }
   .output{
