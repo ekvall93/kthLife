@@ -29,7 +29,7 @@
         <a class="nav-link" 
         [class.active]="chapter == 'chapter5'" 
         (click)="chapter='chapter5'">
-        Chapter 5</a>
+        Search application</a>
     </li>
 </ul>
 </div>
@@ -52,7 +52,7 @@
         </p>
         <img src="./assets/images/naive_lifeScience.png" alt="">   
         <p>
-            The figure above demonstrates the distribution of life science when only considering the department that hired them. There are five different departments and 884 authors. As will be demonstrated in chapter 4, this representation is far from reality, and in fact, somewhat misleading.
+            The figure above demonstrates the distribution of life science authors when only considering the department that hired them. There are five different departments and 884 authors. As will be demonstrated in chapter 4, the representation, in this case, is far from reality and also somewhat misleading.
         </p>
     </div>
     <div *ngSwitchCase="'chapter2'" class="chapterDiv">
@@ -65,7 +65,7 @@
         </p>
         <img src="./assets/images/trainingDoc2vec.png">
         <p>
-            The figure above is a small example of the idea of doc2vec. In this example, there are two researchers: researcher A and B. Researcher A is a researcher in life science, and have written an article with doc-di: LS100 which is about dog forensics, and in contrast, researcher B is mathematician that has written an article about Gauge theory with doc-id: M500. To the left, there are two article vectors (M500 and LS100 ) and two-word vectors (Dogs and Addition). Furthermore, as an initial step, these vectors are randomly initiated in three dimensions. Without going into many details, the doc2vec algorithms function is to adjust the vector, so the related items are close to each other in vector space (i.e., M500 to addition, and LS100 to dogs), see the right side of the figure. Now it is possible to compare closeness between words and articles, and this fact is leveraged in the continued work.
+            The figure above is a small example of the idea of doc2vec. In this example, there are two researchers, i.e., researcher A and B. Researcher A is a researcher in life science and has written an article with doc-id: LS100, which is about dog forensics. Researcher B is a mathematician who has written an article about Gauge theory with doc-id: M500. To the left, there are two article vectors (M500 and LS100) and two-word vectors (Dogs and Addition). Furthermore, as a first step, these vectors are randomly initiated in three dimensions. Without going into all the details, the doc2vec algorithm function aims to adjust the vectors, so the related items are close to each other in vector space (i.e., articleM500 to the word addition, and article LS100 to the word dogs), see the right side of the figure. Now it is possible to compare closeness between words and articles, and this fact is leveraged in the continued work.
         </p>
 
     </div>
@@ -85,7 +85,7 @@
         <img id="distImg" src="./assets/images/DistributionClusters.png" alt="">     
 
         <p>
-            The figure above demonstrated the distribution of the life science articles in the different clusters. Imagine skipping this step and, instead, randomly picking articles for the training/testing/validation set; these set would mainly constitute articles from cluster 131, 154, and 206, and less representation(if none) from the smaller cluster. By systematically picking a few data points from each cluster evades this problem, and hence, overfitting is less of a problem.
+            The figure above illustrates the distribution of the life science articles in the different clusters. Imagine now to skip this step and, instead, randomly pick articles from the training/testing/validation set. A probable outcome would be that the set would mainly constitute of articles from cluster 131, 154, and 206, and hence with less representation (if any) from the smaller cluster – i.e., resulting in very homogenous datasets; requiring the model to extrapolate too much. Instead, by systematically picking a few data points from each cluster forces the datasets to be more heterogeneous, and hence, overfitting will be less of a problem.
         </p>
 
         <p>
@@ -101,21 +101,21 @@
             Only using 1% of the data appears precarious, but, in fact, this spare set serves only as a basis for the accumulation of new data, and it is because semi-supervised learning is adopted. Here is a brief description of the method used: Start the procedure by initiate training of a model with the small dataset – the teacher model. After that, use the teacher model to make predictions on the rest of the unlabeled data and join the most confident predictions to the training set. Finally, a second model – the student model – trains on the extended data set – i.e., the teacher teaches the student. Additionally, this approach can be re-iterated (either by depletion of unlabeled data or trivially terminate the algorithm), where the student becomes the teacher for each new iteration – i.e., make predictions of remaining unlabeled dataset (those with too low confidence in previous iterations) for further addition of data-points to the dataset. 
         </p>
         <p>
-            The data split-paradigm for the train/test/validation set is the 6:3:1 ratio, i.e., for every ten samples, for each cluster,  six data points goes to the training set, three to the validation set, and one to the test set. Generally, an 8:1:1 split is the most common in machine learning of this data size. However, since semi-supervised learning is adopted, and the test accuracy will be used as a threshold for reject/accept of unlabeled data, hence, the test set must not be biased. One of the easiest ways to avoid bias, in this case, is to have a larger test-sample.
+            The data split-paradigm for the train/test/validation set is the 6:3:1 ratio, i.e., for every ten samples, for each cluster, six data points goes to the training set, three to the validation set, and one to the test set. Generally, an 8:1:1 split is the most common in machine learning of equal data size. However, since semi-supervised learning is adopted, and the test accuracy will be used as a threshold for reject/accept of unlabeled data, the test-data must not become biased. One of the easiest ways to avoid bias, in this case, is to have a larger test-sample.
         </p>
         <p>
-                To accept a data point from the unlabeled dataset, and therefore add it to the training data, this condition has to be satisfied: The test accuracy when training the model with that datapoint must at least be as good as the previous best test accuracy without that particular data point.
+            To accept a data point from the unlabeled dataset, and therefore add it to the training data, the following condition has to be satisfied: The test accuracy when training the model with that datapoint must at least be as good as the previous best test accuracy without that particular data point.
         </p>
 
         <p>
-                The model used is Naive Bayes, and the semi-supervised learning ran until there were no more unlabeled data left. With the final accuracy of ~95% of the validation set.
+            The model used is Naive Bayes, and the semi-supervised learning ran until there were no more unlabeled data left. With the final accuracy of ~95% of the validation set.
         </p>
 
         
         <img src="./assets/images/articleDepartmentFinal.png" alt=""> 
 
         <p>
-            Recall the distribution in chapter 1; the outcome is quite different two ways: diversity and a total number of authors. The method suggests a vast diversity within life science – 34 additional (39 in total)  departments. It also suggests the research within life science is more massive than observed on its surface – almost twice as many (1744 in total) authors. Both these results might seem astounding, but the result in chapter 5 is quite persuasive.
+            Recall the distribution in chapter 1; the outcome is quite different two ways: diversity and a total number of authors. The method suggests a vast diversity within life science – 34 additional (39 in total)  departments. It also suggests the research within life science is more massive than observed on its surface – almost twice as many (1744 in total) authors. Both these results might seem astounding, but the "Search application" on next page is quite persuasive.
         </p>
     </div>
     <div *ngSwitchCase="'chapter5'"> 
