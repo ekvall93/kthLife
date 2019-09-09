@@ -29,7 +29,13 @@
         <a class="nav-link" 
         [class.active]="chapter == 'chapter5'" 
         (click)="chapter='chapter5'">
-        Search application</a>
+        Search Application</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" 
+        [class.active]="chapter == 'chapter6'" 
+        (click)="chapter='chapter6'">
+        Bubble Chart</a>
     </li>
 </ul>
 </div>
@@ -48,7 +54,7 @@
         </p>
         
         <p>
-            In this particular project, only the abstract of the article is adopted to increase efficiency. The syllabus (all unique words observed in the collection of articles) amounts to approximately 61 thousand words, with 24 thousand articles and 7 thousand authors.
+            In this particular project, only the abstract of the article is adopted to increase efficiency. The vocabulary (all unique words observed in the collection of articles) amounts to approximately 61 thousand words, with 24 thousand articles and 7 thousand authors.
         </p>
         <img src="./assets/images/naive_lifeScience.png" alt="">   
         <p>
@@ -197,5 +203,10 @@
                     </div>
                 </div>
             
+    </div>
+    <div *ngSwitchCase="'chapter6'">
+        <div id="divWithBubbles">
+            <bubble-chart></bubble-chart>
+        </div>
     </div>
 </div>
